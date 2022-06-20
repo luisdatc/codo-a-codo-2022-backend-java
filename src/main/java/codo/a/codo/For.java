@@ -18,7 +18,7 @@ public class For {
 		}
 		
 		
-		
+		teclado.close();
 	}
 
 }

@@ -18,7 +18,7 @@ public class Variables {
 		double d = 1.0; // no se hace falta colocarle la letra al final 
 		
 		
-		boolean flag = true or false; 
+		//boolean flag = //true // or false; 
 		
 		//tph buscar los rangos de representacion de cada tipo de los numericos 
 		
