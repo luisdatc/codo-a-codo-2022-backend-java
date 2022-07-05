@@ -5,7 +5,7 @@ public class FabricaDeAutos {
 	public static void main(String[] args) {
 		// quiero crear mi primerobjeto de la clase autos
 		
-		Auto fiatUno = new Auto();
+		Auto fiatUno = new Auto(300f, "AUTO", new Motor("MOTOR", 300f));
 
 		fiatUno.encender();
 		fiatUno.verVelocidad();
@@ -20,7 +20,7 @@ public class FabricaDeAutos {
 		fiatUno.verVelocidad();
 		
 		System.out.println("Frenando");
-		fiatUno.frenar();//2
+		fiatUno.frenar();//2 
 		fiatUno.verVelocidad();
 
 		

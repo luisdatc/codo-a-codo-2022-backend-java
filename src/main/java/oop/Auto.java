@@ -1,58 +1,81 @@
 package oop;
 
-//nombre clase
+//nombre clase, atributos privados
 public class Auto {
 
 	//atributos de la clase
-	String color; 
-	int anio; 
-	long serie;
-	String marca;
-	String modelo; 
-	float velocidad;
-	float velocidadMaxima;
-	boolean encendido; 
-
+	private String color; 
+	private int anio; 
+	private long serie;
+	private String marca;
+	private String modelo; 
+	private float velocidad;
+	private float velocidadMaxima;
+	private boolean encendido; 
+	
+	private Motor motor; 
+	private Estereo estereo;
 	//cuanod nace el objeto: constructor
 	
-	Auto(){
-		velocidad = 0;
-		anio = 2022;
-		marca = "sin marca";
-		modelo = "sin modelo";
-		encendido = false;
-		velocidadMaxima = 3;
+	public Auto(float velocidadMaxima, String marca, String string){
+		this.setVelocidad(0);
+		this.setAnio(2022);
+		this.setEncendido(false);
+		this.setVelocidadMaxima(velocidadMaxima);
+		this.setMarca(marca);
+		this.setMotor(string);
+		
 	}
 	
+	public void setMotor(Motor motor) {
+		if(motor == null) {
+			Motor motorInterno = new Motor("default", 100f);
+			this.motor = motorInterno;
+		}else {
+			this.motor = motor; 
+		}
+
+	}
+	
+	public Motor getMotor() {
+		return this.motor;
+	}
 	
 	//metodos
 	
-	void encender(){
-		if(!encendido) {
-			encendido = true; 
+	public void encender(){
+		if(!this.isEncendido()) {
+			this.setEncendido(true); 
 			System.out.println("Se ha Encendido el Auto");
 		}else {
 			System.out.println("No se puede Encender el Auto 2 Veces");
 		}
 	}
 	
-	void apagar() {
-		if(encendido) {
-			while(velocidad>0) {
+	public void setEstereo(Estereo nuevoEstereo) {
+		if(nuevoEstereo != null)
+			this.estereo = nuevoEstereo;
+	}
+	
+	public void apagar() {
+		if(this.isEncendido()) {
+			while(this.getVelocidad() > 0) {
 				frenar();
 			}
-			encendido=false; 
+			
+			this.setEncendido(false);
+			//encendido=false; 
 			System.out.println("Se ha apagado el Auto correctamente");
 		}else {
 			System.out.println("No se puede apagar 2 veces.");
 		}
 	}
 	
-	void acelerar() {
+	public void acelerar() {
 		//if(encendido==true)
-		if(encendido) {
-			if(velocidad<velocidadMaxima) {
-				velocidad++;
+		if(this.isEncendido()) {
+			if(this.getVelocidad() < this.getVelocidadMaxima()) {
+				this.setVelocidad(this.getVelocidad()+1);
 			}else {
 				System.out.println("Error: no se puede superar la velocidad maxima.");
 			}
@@ -61,10 +84,10 @@ public class Auto {
 		}
 	}
 	
-	void frenar() {
-		if(encendido) {
-			if(velocidad>0) {
-				velocidad--;
+	public void frenar() {
+		if(this.isEncendido()) {
+			if(this.getVelocidad() > 0) {
+				this.setVelocidad(this.getVelocidad()-1);
 				System.out.println("Se ha reducido la velocidad del auto.");
 			}
 		}else {
@@ -72,7 +95,122 @@ public class Auto {
 		}
 	}
 	
-	void verVelocidad() {
+	public void verVelocidad() {
 		System.out.println(velocidad);
 	}
+
+
+	public String getColor() {
+		return color;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
+	public int getAnio() {
+		return anio;
+	}
+
+
+	private void setAnio(int anio) {
+		this.anio = anio;
+	}
+
+
+	public long getSerie() {
+		return serie;
+	}
+
+
+	private void setSerie(long serie) {
+		this.serie = serie;
+	}
+
+
+	public String getModelo() {
+		return modelo;
+	}
+
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+
+	public float getVelocidad() {
+		return velocidad;
+	}
+
+
+	private void setVelocidad(float velocidad) {
+		if(velocidad < 0) {
+			this.velocidad = 0;
+		}else {
+		this.velocidad = velocidad;			
+		}
+	}
+
+
+	public float getVelocidadMaxima() {
+		return velocidadMaxima;
+	}
+
+
+	private void setVelocidadMaxima(float velocidadMaxima) {
+		if(velocidadMaxima < 0 || velocidadMaxima > 220) {
+			if(velocidadMaxima < 0)
+				this.velocidadMaxima = 0;
+			if(velocidadMaxima > 220)
+				this.velocidadMaxima = 220;
+		}else {
+			this.velocidadMaxima = velocidadMaxima;
+		}
+	}
+
+
+	public boolean isEncendido() {
+		return encendido;
+	}
+
+
+	public void setEncendido(boolean encendido) {
+		this.encendido = encendido;
+	}
+
+
+	public String getMarca() {
+		//esto es la logica oculta a mundo exterior
+		//tipo primitivos
+		// byte < short < int < long < float < double
+		//WRAPPERS: tiene metodos porque son clases
+		//por defecto como son clases
+		//sus objetos valen null
+		// Byte < Short < Integer < Long < Float < Double
+		//boolean
+		//char
+		//String edad ="10";
+		//wrapper 
+		//int edadInt = Integer.parseInt(edad);
+		
+		// return marca == null ? "" : marca; hacer todo lo que estaba en una linea 
+		String aux = "";
+		if(marca == null)
+			aux = "S/M";
+		return aux;//va a dar nulo
+	}
+	
+	
+	public void setMarca(String marca) {
+		if(marca != null) {
+			this.marca = marca; 
+		}else {
+			this.marca = ""; // a futuro evita errires
+		}
+	}
+	
+	
+	//alt+shift9s para generar getters and setters
 }
