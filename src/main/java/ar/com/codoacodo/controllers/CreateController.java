@@ -2,17 +2,19 @@ package ar.com.codoacodo.controllers;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Statement;
 
 import ar.com.codoacodo.connection.AdministradorDeConexiones;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 //herencia
 //create controller es hijo de 
 
-
+@WebServlet("/CreateController")
 public class CreateController extends HttpServlet {
 	
 	@Override
@@ -23,9 +25,6 @@ public class CreateController extends HttpServlet {
 		//en req viene los datos que manda el formulario html
 		//clave = valor 
 		
-
-
-
 		String nombre = req.getParameter("nombre");
 		String precio = req.getParameter("precio");//convertir en float
 		String fechaCreacion = ""; //damos nosotros
@@ -33,17 +32,22 @@ public class CreateController extends HttpServlet {
 		String codigo = req.getParameter("codigo");
 		//pedir una conexion: administradorDeConecion.getConection()
 		Connection con = AdministradorDeConexiones.getConnection(); 
-		if(con !=null) {
-
-			String sql = 	"INSERT INTO PRODUCTO (nombre, precio,fecha_creacion,imagen,codigo)";
+		if(con != null) {
+			//insert en la db > SQL: INSERT INTO....
+			String sql = "INSERT INTO PRODUCTO (nombre, precio,fecha_creacion,imagen,codigo)";
 			sql += "VALUES('"+nombre+"',"+precio+",CURDATE(),'"+imagen+"','"+codigo+"')";
 			
-			//
-			
+			try {
+				Statement st = con.createStatement();
+				st.execute(sql);
+				
+				//cierre de conexion 
+				con.close();
+				
+				resp.sendRedirect(req.getContextPath()+"/api/ListadoController");
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
 		}
-		
-		
 	}
-	
-	
 }

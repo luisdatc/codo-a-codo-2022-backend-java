@@ -27,22 +27,49 @@
 		
 		<!-- agrego dependencia para poder usar los controller con tecnologia servlet -->
 		<dependency>
-		    <groupId>jakarta.servlet.jsp</groupId>
-		    <artifactId>jakarta.servlet.jsp-api</artifactId>
-		    <version>3.0.0</version>
+		    <groupId>javax.servlet.jsp</groupId>
+		    <artifactId>javax.servlet.jsp-api</artifactId>
+		    <version>2.3.3</version>
 		    <scope>provided</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
 		<dependency>
-		    <groupId>jakarta.servlet</groupId>
-		    <artifactId>jakarta.servlet-api</artifactId>
-		    <version>5.0.0</version>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>4.0.1</version>
 		    <scope>provided</scope>
 		</dependency>
 			
 		
 			
 	</dependencies>
+	<build>
+		<finalName>Codoacodo-back</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.heroku</groupId>
+									<artifactId>webapp-runner</artifactId>
+									<version>9.0.41.0</version>
+									<destFinalName>webapp-runner.jar</destFinalName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<!--  contrl + shift+f para formatear codigo -->
 		
 </project>
