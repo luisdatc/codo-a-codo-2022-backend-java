@@ -28,7 +28,7 @@ public class Arrays {
 		
 		//recorrer el array usando foreach
 		
-		for(int aux : arrar) {
+		for(int aux : array) {
 			System.out.println(aux);
 		}
 		

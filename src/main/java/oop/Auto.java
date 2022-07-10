@@ -9,30 +9,27 @@ public class Auto {
 	private long serie;
 	private String marca;
 	private String modelo; 
-	private float velocidad;
+	public float velocidad;
 	private float velocidadMaxima;
 	private boolean encendido; 
 	
 	private Motor motor; 
-	private Estereo estereo;
-	//cuanod nace el objeto: constructor
-	
-	public Auto(float velocidadMaxima, String marca, String string){
+	public Auto(float velocidadMaxima, String marca, Motor motor2){
 		this.setVelocidad(0);
 		this.setAnio(2022);
 		this.setEncendido(false);
 		this.setVelocidadMaxima(velocidadMaxima);
 		this.setMarca(marca);
-		this.setMotor(string);
+		this.setMotor(motor2);
 		
 	}
 	
-	public void setMotor(Motor motor) {
-		if(motor == null) {
+	public void setMotor(Motor motor2) {
+		if(motor2 == null) {
 			Motor motorInterno = new Motor("default", 100f);
 			this.motor = motorInterno;
 		}else {
-			this.motor = motor; 
+			this.motor = motor2; 
 		}
 
 	}
@@ -53,8 +50,8 @@ public class Auto {
 	}
 	
 	public void setEstereo(Estereo nuevoEstereo) {
-		if(nuevoEstereo != null)
-			this.estereo = nuevoEstereo;
+		if(nuevoEstereo != null) {
+		}
 	}
 	
 	public void apagar() {

@@ -38,10 +38,7 @@
 		    <artifactId>javax.servlet-api</artifactId>
 		    <version>4.0.1</version>
 		    <scope>provided</scope>
-		</dependency>
-			
-		
-			
+		</dependency>			
 	</dependencies>
 	<build>
 		<finalName>Codoacodo-back</finalName>
@@ -61,7 +58,7 @@
 									<groupId>com.heroku</groupId>
 									<artifactId>webapp-runner</artifactId>
 									<version>9.0.41.0</version>
-									<destFinalName>webapp-runner.jar</destFinalName>
+									<destFileName>webapp-runner.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
