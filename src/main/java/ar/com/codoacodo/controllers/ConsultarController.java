@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ar.com.codoacodo.connection.AdministradorDeConexiones;
-import ar.com.codoacodo.dto.Producto;let.http.HttpServletResponse;
+import ar.com.codoacodo.dto.Producto;
 
 @WebServlet("/api/ConsultarController")
 public class ConsultarController extends HttpServlet {

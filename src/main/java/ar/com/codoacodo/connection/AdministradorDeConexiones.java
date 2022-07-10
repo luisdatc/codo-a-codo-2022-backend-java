@@ -16,14 +16,12 @@ public class AdministradorDeConexiones {
 		String user = System.getenv("DATASOURCE_USERNAME");
 		String password = System.getenv("DATASOURCE_PASSWORD");
 		String driverName = System.getenv("DATASOURCE_DRIVER");
-		
-		
-		
+				
 		//control errores
 		Connection con = null;
 		try {
 			Class.forName(driverName);//carga en memoria el driver
-			con = DriverManager.getConnection(url,username,password);
+			con = DriverManager.getConnection(url,user,password);
 		}catch(Exception e) {
 			e.printStackTrace();//se que paso o porque fallo
 		}
