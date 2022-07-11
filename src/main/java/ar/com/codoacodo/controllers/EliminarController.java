@@ -39,5 +39,5 @@ public class EliminarController extends HttpServlet {
 				e.printStackTrace();
 			}	
 		}
-	}clase 34 minuto 50
+	}
 }
