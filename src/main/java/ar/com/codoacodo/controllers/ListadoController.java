@@ -15,7 +15,7 @@ import ar.com.codoacodo.dto.Producto;
 @WebServlet("/api/ListadoController")
 public class ListadoController extends HttpServlet {
 	
-	//@Override esto no lo tenia el profe por eso lo comente
+	@Override //esto no lo tenia el profe por eso lo comente
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
 		//crear la instancia de productoDAO

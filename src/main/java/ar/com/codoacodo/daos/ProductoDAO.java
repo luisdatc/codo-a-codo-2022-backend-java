@@ -27,9 +27,8 @@ public class ProductoDAO {
 		try {
 			Statement st = con.createStatement();
 			
-			//resultset
 			ResultSet rs = st.executeQuery(sql);
-			//viene un solo registrp
+
 			if(rs.next()) {//si existe hay uno solo
 				//rs > sacando los datos
 				Long idProducto = rs.getLong(1);//tomar la primera columna 
@@ -54,8 +53,6 @@ public class ProductoDAO {
 		
 		String sql = "SELECT * FROM PRODUCTO "; 
 
-		//connection
-		//conexion OK
 		Connection con = AdministradorDeConexiones.getConnection(); 
 		
 		List<Producto> list = new ArrayList<>();
